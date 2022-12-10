@@ -21,24 +21,32 @@ function addTodo(event){
     const newTodo = document.createElement('li');
     newTodo.innerText=todoInput.value;
     newTodo.classList.add('todo-item');
-    todoDiv.appendChild(newTodo);
-    //add todo to local storage
-    saveLocalTodos(todoInput.value);
-    //check mark button
-    const completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class="fas fa-check"></i>';
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-    //check trash button
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
+    if(todoInput.value.trim()===''){
+        alert('Enter some task!')
+    }
+    else{
+        todoDiv.appendChild(newTodo);
+        //add todo to local storage
+        saveLocalTodos(todoInput.value);
+        //check mark button
+        const completedButton = document.createElement('button');
+        completedButton.innerHTML = '<i class="fas fa-check"></i>';
+        completedButton.classList.add("complete-btn");
+        
+        todoDiv.appendChild(completedButton);
+        //check trash button
+        const trashButton = document.createElement('button');
+        trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+        trashButton.classList.add("trash-btn");
+        todoDiv.appendChild(trashButton);
 
-    //Append to list
-    todoList.appendChild(todoDiv);
-    //clear todo input value
-    todoInput.value="";
+        //Append to list
+        todoList.appendChild(todoDiv);
+        //clear todo input value
+        todoInput.value="";
+    }
+    
+    
 }
 
 function deleteCheck(e){
